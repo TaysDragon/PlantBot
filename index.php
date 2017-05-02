@@ -1,1 +1,0 @@
-<?php header( 'Location: \Other files\GifTastic\index.html' ) ;  ?>
