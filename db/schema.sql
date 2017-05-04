@@ -1,9 +1,9 @@
 ### Schema
 
-CREATE DATABASE cat_db;
-USE cat_db;
+CREATE DATABASE plants_db;
+USE plants_db;
 
-CREATE TABLE cats
+CREATE TABLE trees
 (
 	id int NOT NULL AUTO_INCREMENT,
 	name varchar(255) NOT NULL,
