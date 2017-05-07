@@ -1,11 +1,57 @@
+<!-- ! + tab -->
+<!-- Link the style sheet -->
+<!-- Link the javascript -->
+<!-- Grab bootstrap CDN -->
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
-		<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-		<title>MVC With Cats!</title>
+	<!-- Page Title -->
+    <title>PlantBot</title>
+    <!-- Latest bootstrap compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- PlantBot css -->
+    <link rel="stylesheet" type="text/css" href="../../public/assets/css/style.css">
+    <!-- PlantBot reset css -->
+    <link rel="stylesheet" type="text/css" href="../../public/assets/css/reset.css">
 	</head>
 	<body>
+	<nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="home.html"><img alt="PlantBot" src="../../public/assets/images/leaf-icon-35694.png" width="80 px" height="80 px">
+                </a><h1>PlantBot</h1>
+            </div>
+        </div>
+    </nav>
 		{{{ body }}}
+
+<!-- Rendered buttons will get dumped Here  -->
+        
+        <form id="plant-form">
+            <label for="plantAdd">Add a plant</label>
+            <input type="text" id="plantAdd">
+            <br>
+            <!-- Button triggers new plant to be added -->
+            <input id="add-plant" type="submit" value="Add a plant">
+        </form>
+        <!-- Show plant picture -->
+        <div id="plant-view"></div>
+
+		<footer>
+        <div class="container">
+            <p>Copyright &copy; 2017 Sharon Oud, Karin Rimstidt, Elizabeth Baskin. All Rights Reserved, BITCHES.</p>
+        </div>
+    </footer>
 	</body>
+	<!-- link to PlantBot java -->
+    <script type="text/javascript" src="public/assets/javascript/plantbot.js"></script>
 </html>
