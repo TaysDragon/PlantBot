@@ -1,0 +1,35 @@
+<form class="center" role="form" style="width: 500px">
+            <!-- Here we create the text box for capturing the search term-->
+            <div class="form-group">
+                <label for="search">Common Name:</label>
+                <input type="text" class="form-control" id="search-term">
+                <label for="search">Botanical Name:</label>
+                <input type="text" class="form-control" id="search-term">
+                <label for="search">Cultivar:</label>
+                <input type="text" class="form-control" id="search-term">
+                <label for="search">Water Requirement:</label>
+                <input type="text" class="form-control" id="search-term">
+           
+                <label for="pwd">Lighting Requirement:</label>
+                <select class="form-control" id="num-records-select">
+                <option disabled selected value> -- select an option -- </option>
+                    <option>Shade</option>
+                    <!-- Setting the option for 5 as default -->
+                    <option>Part Sun</option>
+                    <option>Full Sun</option>
+                </select>
+                <label for="pwd">Soil Type:</label>
+                <select class="form-control" id="num-records-select">
+                <option disabled selected value> -- select an option -- </option>
+                    <option value="1">Alkaline</option>
+                    <!-- Setting the option for 5 as default -->
+                    <option value="5">Acidic</option>
+                    <option value="10">Neutral</option>
+                </select>
+            </div>
+            <!-- Here we have our final submit button -->
+
+              {{!-- <button type="submit">Add Cat</button> --}}
+            <button type="submit" class="btn btn-default" id="run-search"><i class="fa fa-search"></i> Search</button>
+            <button type="button" class="btn btn-default" id="clear-all"><i class="fa fa-trash"></i> Clear Form</button>
+        </form>
