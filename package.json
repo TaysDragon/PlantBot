@@ -1,36 +1,41 @@
 {
-  "name": "plantbot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "engines": {
-    "node": "6.9.4"
-  },
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "express-handlebars": "^3.0.0",
-    "handlebars": "^4.0.5",
-    "method-override": "^2.3.5",
-    "mysql": "^2.12.0",
-    "sequelize": "^3.28.0",
-    "axiom": "^0.1.6"
-  },
-  "devDependencies": {
-    "handlebars-helper-css": "^0.1.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TaysDragon/PlantBot.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/TaysDragon/PlantBot/issues"
-  },
-  "homepage": "https://github.com/TaysDragon/PlantBot#readme"
+    "name": "plantbot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "engines": {
+        "node": "6.9.4"
+    },
+    "dependencies": {
+        "body-parser": "^1.15.2",
+        "express": "^4.14.0",
+        "express-handlebars": "^3.0.0",
+        "handlebars": "^4.0.5",
+        "method-override": "^2.3.5",
+        "mysql": "^2.12.0",
+        "sequelize": "^3.28.0",
+        "axiom": "^0.1.6"
+    },
+    "devDependencies": {
+        "handlebars-helper-css": "^0.1.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TaysDragon/PlantBot.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/TaysDragon/PlantBot/issues"
+    },
+    "homepage": "https://github.com/TaysDragon/PlantBot#readme",
+
+    "production": {
+        "use_env_variable": "JawsDB_URL",
+        "dialect": "mysql"
+    }
 }
