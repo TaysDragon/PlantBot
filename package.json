@@ -6,10 +6,12 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "express-handlebars": "^2.0.1",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.5",
     "method-override": "^2.3.5",
     "mysql": "^2.12.0",
-    "sequelize": "^3.28.0"
+    "sequelize": "^3.28.0",
+    "axiom": "^1.2.20"
   },
   "devDependencies": {
     "handlebars-helper-css": "^0.1.0"
