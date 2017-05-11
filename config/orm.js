@@ -88,5 +88,5 @@ var orm = {
   }
 };
 
-// Export the orm object for the model (cat.js).
+// Export the orm object for the model (models/planbot.js).
 module.exports = orm;

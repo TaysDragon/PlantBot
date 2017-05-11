@@ -3,7 +3,7 @@
 html {
     text-align: center;
     background-color: #ffdbe6;
-    background: url(../images/vectorBackground.jpeg) no-repeat center center fixed;
+    background: url(../images/ginko.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -18,7 +18,7 @@ body {
 }
 
 nav {       
-    background-color: rgb(255,255,255); 
+    background: transparent !important; 
     font-family: 'Georgia', Times, Times New Roman, serif;
     font-size: 20px;    
     color: #4aaaa5;

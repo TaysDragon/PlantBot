@@ -1,4 +1,4 @@
-// Set up MySQL connection.
+// CONNECTION.JS - THIS FILE INITIATES THE CONNECTION TO MYSQL
 var mysql = require("mysql");
 
 var connection = mysql.createConnection({
