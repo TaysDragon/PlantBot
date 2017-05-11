@@ -1,16 +1,27 @@
+### Schema
 
-// Note, doNOT use the create database, because heroku names the database the string after the last slash.
-CREATE DATABASE burgers_db;
-USE burgers_db;
+CREATE DATABASE plants_db;
+USE plants_db;
 
-DROP TABLE IF EXISTS `burgers`;
-
-// Database created by jaws DB, but table isNOT
-
-CREATE TABLE `burgers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `burger_name` varchar(255) NOT NULL,
-  `devoured` tinyint(1) NOT NULL DEFAULT '0',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `plants_db`.`fruit_trees`
+(
+   `tree_id` INTEGER NOT NULL AUTO_INCREMENT,
+   `common_name` VARCHAR(255) NOT NULL,
+   `cultivar` VARCHAR(255) NULL,
+   `botanical_name` VARCHAR(255) NULL,
+   `ripening_season` VARCHAR(4000) NULL,
+   `chill_min` INTEGER NULL,
+   `chill_max` INTEGER NULL,
+   `cold_hardiness` INTEGER NULL,
+   `fruit` VARCHAR(4000) NULL,
+   `water_needs` VARCHAR(255) NULL,
+   `sun` VARCHAR(255) NULL,
+   `soil_type` VARCHAR(255) NULL,
+   `ph_low` INTEGER NULL,
+   `ph_high` INTEGER NULL,
+   `fertilizer` VARCHAR(255) NULL,
+   `originating_region` VARCHAR(255) NULL,
+   `description` VARCHAR(4000) NULL,
+   `parentage` VARCHAR(255) NULL,
+   PRIMARY KEY (`tree_id`)
+);
