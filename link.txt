@@ -1,0 +1,14 @@
+https://plantbot80.herokuapp.com/ | https://git.heroku.com/plantbot80.git
+
+get server riunning
+require axios
+var axios = require('axios')
+
+
+var axios = require('axios');
+axios.get('http://tropicalfruitandveg.com/api/tfvjsonapi.php?tfvitem=avocado')
+  .then(function(response){
+       console.log(response.data);
+  });
+
+
