@@ -1,22 +1,18 @@
-// Set up MySQL connection.
-var mysql = require("mysql");
-
+/*var mysql = require('mysql');
 var connection = mysql.createConnection({
-  port: 3306,
-  host: "localhost",
-  user: "root",
-  password: ,
-  database: "plants_db"
+    port: 3306,
+    host: "izm96dhhnwr2ieg0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    user: "bejimd2nh99xezrv",
+    password: "mst6nrdh8yqpj561",
+    database: "zjzu54wheh3opdh4"
 });
 
-// Make connection.
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
-  console.log("connected as id " + connection.threadId);
+connection.connect(function (err) {
+	if (err) {
+		console.error('error connecting: ' + err.stack);
+		return;
+	}
+	console.log('connected as id ' + connection.threadId);
 });
 
-// Export connection for our ORM to use.
-module.exports = connection;
+module.exports = connection;*/

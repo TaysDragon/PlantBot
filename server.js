@@ -1,50 +1,71 @@
-// Server.js is the initial starting point for the Node/Express server.
-// *** Dependencies
-var express = require("express");
-var exphbs = require("express-handlebars");
-var bodyParser = require("body-parser");
-var methodOverride = require("method-override");
-var axios = require('axios');
-
-// Sets up the Express App
-// =============================================================
+var express = require('express');
 var app = express();
-var PORT = process.env.PORT || 8080;
+// The code below tells heroku to get the environment instead of 3000 when on heroku, app will not work without this on heroku.
+var PORT = process.env.PORT || 3000;
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var models = require('./models');
+var exphbs = require('express-handlebars');
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main'
+}));
+app.set('view engine', 'handlebars');
 
-// Requiring our models for syncing
-var db = require("./models");
+// This says that if we do root or /, we mean to look in the public folder.
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({
+	extended: false
+}));
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'));
 
-// Sets up the Express app to handle data parsing
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(process.cwd() + "/public"));
-app.use(bodyParser.json());
-//The "extended" syntax allows for rich objects and arrays to be encoded into the URL-encoded format, allowing for a JSON-like experience with URL-encoded. 
-//This object will contain key-value pairs, where the value can be a string or array (when extended is false), or any type (when extended is true).
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+var routes = require('./controllers/burgers_controller.js');
+app.use('/', routes);
 
-// Override with POST having ?_method=DELETE
-app.use(methodOverride("_method"));
+app.listen(PORT);
 
-// Set Handlebars.
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+// The code commented out below is this app without modularization.  I am leaving this here for my notes.  I moved the app.get, post, put, and delete requests to burgers_controller, then required var router = express.Router(), then called router.get, post, put, and delete in that file.  At the end of that file, I exported the routes via module.exports = router, and imported them here with var routes = require('./controllers/burgers_controller.js'); and app.use('/', routes);
 
+// See the note above to review the code below.
 
-// Import routes and give the server access to them.
-var routes = require("./controllers/controller.js");
-
-app.use("/", routes);
-
-server.listen(port, function() {
-    console.log("App is running on port " + PORT);
+/*app.get('/', function(req,res) {
+     res.redirect('/burgers');
 });
 
-// Syncing our sequelize models and then starting our express app
-// db.sequelize.sync({ force: true }).then(function() {
-//   app.listen(PORT, function() {
-//     console.log("App listening on PORT " + PORT);
-//   });
-// });
+app.get('/burgers', function(req,res) {
+          models.burgers.findAll()
+          .then(function(data){
+               //console.log(data);
+               res.render('index', {burgers : data});
+         });
+});
 
+app.post('/burgers/create', function(req, res) {
+    //models.Users.findAll({where: {email: req.body.newname}}) this line may not work
+    //models.Users.findOne({where: {email: req.body.newname}})
+    //console.log(req.body.name);
+    models.burgers.create({
+        burger_name: req.body.name,
+        devoured: 0})
+        .then(function() {
+	   res.redirect('/burgers');
+			});
+});
+
+app.put('/burgers/update/:id', function(req,res) {
+     var theId = req.params.id;
+	models.burgers.update(
+          {devoured : true}, {where: { id: theId}}
+     ).then(function() {
+          res.redirect('/burgers');
+     });
+});
+
+app.delete('/burgers/delete/:id', function(req,res) {
+     var theId = req.params.id;
+	models.burgers.destroy(
+          {where: { id: theId}}
+     ).then(function() {
+          res.redirect('/burgers');
+     });
+});*/
