@@ -1,5 +1,10 @@
-// Import the schema to create functions that will interact with the database.
+// Sequelize (capital) references the standard library
+var Sequelize = require("sequelize");
+// sequelize (lowercase) references my connection to the DB.
+var sequelize = require("../config/connection.js");
 
+
+// Makes the Plant Model (schema) available for other files (will also create a table)
 module.exports = function(sequelize, DataTypes) {
   var Plant = sequelize.define("fruit_trees", {
     common_name: {
@@ -56,7 +61,13 @@ module.exports = function(sequelize, DataTypes) {
     },parentage: {
       type: DataTypes.STRING,
       allowNull: true
-    }
+    }, {
+  timestamps: false
   });
   return Plant;
 };
+
+// Syncs with DB
+Plant.sync();
+
+
