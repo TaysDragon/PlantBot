@@ -35,8 +35,7 @@ app.use(methodOverride("_method"));
 
 // Import routes and give the server access to them.
 require("./routes/html-routes.js")(app);
-require("./routes/post-api-routes.js")(app);
-require("./routes/author-api-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 
 

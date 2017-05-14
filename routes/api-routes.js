@@ -22,12 +22,12 @@ module.exports = function(app) {
   });
 
  // Get all plants of a specific genus
-  app.get("/api/genre/:genre", function(req, res) {
+  app.get("/api/commonName/:commonName", function(req, res) {
 
-    if (req.params.genre) {
-      Book.findAll({
+    if (req.params.commonName) {
+      Plant.findAll({
         where: {
-          genre: req.params.genre
+          common_name: req.params.commonName
         }
       }).then(function(results) {
         res.json(results);

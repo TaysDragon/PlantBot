@@ -1,33 +1,29 @@
-$(document).ready(function() {
+
   // Getting references to the name inout and plant container, as well as the table body
   // var nameInput = $("#plant-name");
   // var plantList = $("tbody");
   // var plantContainer = $(".plant-container");
 
- var commonName = $("#commonName");
-  var botanicalName = $("botanicalName");
-  var cultivar = $("cultivar");
-  var water = $("water");
-  var sun = $("sun");
-  var soil = $("soil");
+//  var commonName = $("#commonName");
+//   var botanicalName = $("botanicalName");
+//   var cultivar = $("cultivar");
+//   var water = $("water");
+//   var sun = $("sun");
+//   var soil = $("soil");
 
 
-var queryURL="";
-$(document).ready(function(){
-  $("#form").empty();
-
-$("#clear").on("click", function(){
-  $("#commonName").empty();
-  $("#botanicalName").empty('');
-  $("#cultivar").empty();
-  $("#water").empty('');
-  $("#sun").val('');
-  $("#soil").empty();
-});
+// $("#clear").on("click", function(){
+//   event.preventDefault();
+//   $("#commonName").empty();
+//   $("#botanicalName").empty('');
+//   $("#cultivar").empty();
+//   $("#water").empty('');
+//   $("#sun").val('');
+//   $("#soil").empty();
+// });
 
     // Adding click event listen listener to all buttons
 $("#search").on("click", function(){
-
  // Grabbing and storing the data-animal property value from the button
       var commonName = $("#commonName").val().trim()toLowerCase();
       var botanicalName = $("botanicalName").val().trim()toLowerCase();
@@ -35,28 +31,74 @@ $("#search").on("click", function(){
       var water = $("water").val().trim().toLowerCase();
       var sun = $("sun").val().toLowerCase();
       var soil = $("soil").val().toLowerCase();
+ findCommonName ();
+ console.log(commonName);    
      
-if (commonName) {
-  findCommonName();
-} else if (botanicalName) {
-  findBotanicalName();
-} else if (cultivar) {
- findCultivar();
-} esle if (water) {
-  (findWater);
-}else if (sun){
-findSun();
-}else if (soil) {
-  findSoil();
-}
-};
-      
+// if (commonName) {
+//   findCommonName();
+// } else if (botanicalName) {
+//   findBotanicalName();
+// } else if (cultivar) {
+//  findCultivar();
+// } esle if (water) {
+//   findWater();
+// }else if (sun){
+// findSun();
+// }else if (soil) {
+//   findSoil();
+// }
+
 function findCommonName () {
-  Plant.findOne ({
-    where: {common_name: 'commonName'
+$.get("/api/results/" + commonName, function(data) {
+
+    // Log the data to the console
+    console.log(data);
+    // Call our renderBooks function to add our books to the page
+    renderPlants(data);
+
+  });
+
+};
+
+ function renderPlants(data) {
+  if (data.length !== 0) {
+
+    $("#stats").empty();
+    $("#stats").show();
+
+    for (var i = 0; i < data.length; i++) {
+
+      var div = $("<div>");
+
+      div.append("<h2>" + data[i].title + "</h2>");
+      div.append("<p>Author: " + data[i].common_name + "</p>");
+      div.append("<p>Genre: " + data[i].cultivar + "</p>");
+      div.append("<p>Pages: " + data[i].botanical_name + "</p>");
+      div.append("<p>Pages: " + data[i].ripening_season + "</p>");
+      div.append("<p>Pages: " + data[i].chill_min + "</p>");
+      div.append("<p>Pages: " + data[i].chill_max + "</p>");
+      div.append("<p>Pages: " + data[i].cold_hardiness + "</p>");
+      div.append("<p>Pages: " + data[i].fruit + "</p>");
+      div.append("<p>Pages: " + data[i].water_needs + "</p>");
+      div.append("<p>Pages: " + data[i].sun + "</p>");
+      div.append("<p>Pages: " + data[i].soil_type + "</p>");
+      div.append("<p>Pages: " + data[i].ph_low + "</p>");
+      div.append("<p>Pages: " + data[i].ph_high + "</p>");
+      div.append("<p>Pages: " + data[i].fertilizer + "</p>");
+      div.append("<p>Pages: " + data[i].originating_region + "</p>");
+      div.append("<p>Pages: " + data[i].description + "</p>");
+      div.append("<p>Pages: " + data[i].parentage + "</p>");
+      
+      $("#stats").append(div);
+
     }
-  }).then()
+
+  }
 }
+
+  }
+};
+     
 
 
   // Adding event listeners to the form to create a new object, and the button to delete
@@ -142,4 +184,4 @@ function findCommonName () {
 //     })
 //     .done(getAuthors);
 //   }
- });
+
