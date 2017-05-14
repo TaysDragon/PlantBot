@@ -17,19 +17,19 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/PlantBot.html"));
   });
 
-  // cms route loads cms.html
-  app.get("/cms", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/cms.html"));
-  });
+  // search route loads search.html
+  // app.get("/search", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/search.html"));
+  // });
 
-  // blog route loads blog.html
-  app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
+  // results route loads results.html
+  app.get("/results", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/results.html"));
   });
 
   // authors route loads author-manager.html
-  app.get("/authors", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-  });
+  // app.get("/authors", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/author-manager.html"));
+  // });
 
 };
