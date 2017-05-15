@@ -5,6 +5,7 @@
 // Dependencies
 // =============================================================
 var db = require("../models");
+var db1 = require("../models/plant.js");
 var Sequelize = require('sequelize');
 
 // Routes
@@ -14,7 +15,7 @@ module.exports = function(app) {
   // Get all plants
   app.get("/api/all", function(req, res) {
 
-    db.Plant.findAll({}).then(function(results) {
+    db1.Plant.findAll({}).then(function(results) {
       res.json(results);
     });
 

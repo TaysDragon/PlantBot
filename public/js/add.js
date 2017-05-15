@@ -6,10 +6,24 @@ $("#add-btn").on("click", function(event) {
 
   // Make a newBook object
   var newPlant = {
-    title: $("#title").val().trim(),
-    author: $("#author").val().trim(),
-    genre: $("#genre").val().trim(),
-    pages: $("#pages").val().trim()
+    common_name: $("#commonName").val().trim(),
+    cultivar: $("#cultivar").val().trim(),
+    botanical_name: $("#botanicalName").val().trim(),
+    ripening_season: $("#ripe").val().trim()
+    chill_min: $("#chillMin").val().trim(),
+    chill_max: $("#chillMax").val().trim(),
+    cold_hardiness: $("#cold").val().trim(),
+    fruit: $("#fruit").val().trim(),
+    water_needs: $("#water").val().trim(),
+    sun: $("#sun").val().trim(),
+    soil_type: $("#soil").val().trim(),
+    ph_low: $("#phLow").val().trim(),
+    ph_high: $("#phHigh").val().trim(),
+    fertilizer: $("#fertilizer").val().trim(),
+    originating_region: $("#origin").val().trim(),
+    description: $("#description").val().trim(),
+    parentage: $("#parentage").val().trim()
+
   };
 
   // Send an AJAX POST-request with jQuery
@@ -21,9 +35,6 @@ $("#add-btn").on("click", function(event) {
     });
 
   // Empty each input box by replacing the value with an empty string
-  $("#title").val("");
-  $("#author").val("");
-  $("#genre").val("");
-  $("#pages").val("");
+ 
 
 });
