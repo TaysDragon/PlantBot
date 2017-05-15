@@ -17,4 +17,4 @@ var sequelize = new Sequelize("plants_db", "root", "root", {
 });
 
 // Exports the connection for other files to use
-module.exports = sequelize;
+module.exports = Sequelize;

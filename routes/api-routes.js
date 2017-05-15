@@ -14,7 +14,7 @@ module.exports = function(app) {
   // Get all plants
   app.get("/api/all", function(req, res) {
 
-    fruit_trees.findAll({}).then(function(results) {
+    db.Plant.findAll({}).then(function(results) {
       res.json(results);
     });
 
@@ -78,4 +78,4 @@ module.exports = function(app) {
 
 };
 
-exports.sequelize = sequelize;
+exports.sequelize = Sequelize;

@@ -2,7 +2,7 @@
 var Sequelize = require('sequelize');
 
 
-// module.exports = function(sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
 var Plant = sequelize.define("fruit_trees", {
     common_name: {
       type: Sequelize.STRING,
@@ -59,8 +59,9 @@ var Plant = sequelize.define("fruit_trees", {
       type: Sequelize.STRING,
       allowNull: true
     }
+    
   });
-
 return Plant;
-// };
-module.exports = Plant;
+
+};
+// module.exports = Plant;
