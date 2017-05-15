@@ -6,30 +6,27 @@
 // =============================================================
 var path = require("path");
 
+
 // Routes
 // =============================================================
 module.exports = function(app) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
-  // index route loads PlantBot.html
-  app.get("/PlantBot", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/PlantBot.html"));
+  // index route loads view.html
+  app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/view.html"));
   });
 
-  // search route loads search.html
-  // app.get("/search", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/search.html"));
-  // });
-
-  // results route loads results.html
-  app.get("/results", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/results.html"));
+  // add route loads the add.html page, where users can enter new books to the db
+  app.get("/add", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/add.html"));
   });
 
-  // authors route loads author-manager.html
-  // app.get("/authors", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/author-manager.html"));
-  // });
+  // all route loads the all.html page, where all books in the db are displayed
+  app.get("/all", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/all.html"));
+  });
+
 
 };
