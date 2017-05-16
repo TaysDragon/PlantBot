@@ -31,7 +31,6 @@ $("#search").on("click", function(event) {
 //     renderBooks(data);
 
 //   });
-
 // });
 
 // When user hits the genre-search-btn

@@ -5,7 +5,7 @@
 // Dependencies
 // =============================================================
 var db = require("../models");
-var db1 = require("../models/plant.js");
+//var db1 = require("../models/plant.js");
 var Sequelize = require('sequelize');
 
 // Routes
@@ -15,14 +15,14 @@ module.exports = function(app) {
   // Get all plants
   app.get("/api/all", function(req, res) {
 
-    db1.Plant.findAll({}).then(function(results) {
+    db.fruit_trees.findAll({}).then(function(results) {
       res.json(results);
     });
 
   });
 
   // Get all plants of a specific common name
-  app.get("/api/commonName/:commonName", function(req, res) {
+  app.get("/api/:commonName", function(req, res) {
 
     if (req.params.commonName) {
       Plant.findAll({
@@ -71,7 +71,7 @@ module.exports = function(app) {
     console.log(req.body);
     Plant.destroy({
       where: {
-        id: req.body.id
+        tree_id: req.body.tree_id
       }
     });
 

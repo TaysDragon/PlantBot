@@ -27,7 +27,7 @@ $("#add-btn").on("click", function(event) {
   };
 
   // Send an AJAX POST-request with jQuery
-  $.post("/api/new", newBook)
+  $.post("/api/new", newPlant)
     // On success, run the following code
     .done(function(data) {
       // Log the data we found
