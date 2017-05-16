@@ -16,6 +16,8 @@ CREATE TABLE `plants_db`.`fruit_trees`
    `fruit` VARCHAR(4000) NULL,
    `water_needs` VARCHAR(4000) NULL,
    `soil_type` VARCHAR(45) NULL,
+   'ph_low' INTEGER NULL,
+   'ph_high' INTEGER NULL,
    `fertilizer` VARCHAR(4000) NULL,
    `originating_region` VARCHAR(255) NULL,
    `description` VARCHAR(4000) NULL,

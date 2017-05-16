@@ -36,7 +36,14 @@ require("./routes/html-routes.js")(app);
 
 
 // Syncing our sequelize models and then starting our express app
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true })
+
+.then(function(){
+	return db.Plant.create({      
+        common_name: "mango"
+});
+})
+.then(function() {
   app.listen(process.env.PORT || 8080, function() {
     console.log("App listening on port " + PORT);
   });
