@@ -5,8 +5,8 @@
 // Dependencies
 // =============================================================
 var db = require("../models");
-//var db1 = require("../models/plant.js");
-// var Sequelize = require('sequelize');
+// var db1 = require("../models/fruit.js");
+
 
 // Routes
 // =============================================================
@@ -15,7 +15,7 @@ module.exports = function(app) {
   // Get all plants
   app.get("/api/all", function(req, res) {
 
-    db.Plant.findAll({}).then(function(results) {
+    db.fruit.findAll({}).then(function(results) {
       res.json(results);
     });
 
@@ -25,7 +25,7 @@ module.exports = function(app) {
   app.get("/api/:commonName", function(req, res) {
 
     if (req.params.commonName) {
-      Plant.findAll({
+      db.fruit.findAll({
         where: {
           common_name: req.params.commonName
         }
@@ -42,7 +42,7 @@ module.exports = function(app) {
 
     console.log("Plant Data:");
     console.log(req.body);
-    Plant.create({
+    fruit.create({
       common_name: req.body.commonName,
       cultivar: req.body.cultivar,
       botanical_name: req.body.botanicalName,
@@ -69,7 +69,7 @@ module.exports = function(app) {
 
     console.log("Plant Data:");
     console.log(req.body);
-    Plant.destroy({
+    fruit.destroy({
       where: {
         tree_id: req.body.tree_id
       }

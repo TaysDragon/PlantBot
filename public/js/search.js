@@ -1,6 +1,8 @@
 // When user hits the search-btn
 $("#search").on("click", function(event) {
-  event.preventDefault();
+  // event.preventDefault();
+  //take user to results.html page
+    // window.location.href='results.html';
 
   // Save the book they typed into the book-search input
   var plantSearched = $("#commonName").val().trim();
@@ -8,9 +10,11 @@ $("#search").on("click", function(event) {
   // Make an AJAX get request to our api, including the user's book in the url
   $.get("/api/" + plantSearched, function(data) {
 
-    console.log(data);
-    // Call our renderBooks function to add our books to the page
+    console.log("search.js "+data);
+    $.post("/api/results", data);
+    // render function to add our search results datat to the page
     renderPlants(data);
+
 
   });
 
@@ -53,8 +57,9 @@ $("#search").on("click", function(event) {
 function renderPlants(data) {
   if (data.length !== 0) {
 
-    $("#stats").empty();
-    $("#stats").show();
+    $("#results").empty();
+    $("#results").show();
+    $.post("/api/results", data);
 
     for (var i = 0; i < data.length; i++) {
 
@@ -78,7 +83,7 @@ function renderPlants(data) {
       div.append("<p> " + data[i].description + "</p>");
       div.append("<p> " + data[i].parentage + "</p>");
 
-      $("#stats").append(div);
+      $("#results").append(div);
 
     }
 

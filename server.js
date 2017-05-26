@@ -1,5 +1,5 @@
 // *********************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
+// Server.js is the initial starting point for the Node/Express server.
 // *********************************************************************************
 
 // Dependencies
@@ -36,12 +36,12 @@ require("./routes/html-routes.js")(app);
 
 
 // Syncing our sequelize models and then starting our express app
-db.sequelize.sync({ force: true })
+db.sequelize.sync({ force: false })
 
 .then(function(){
-	return db.Plant.create({      
-        common_name: "mango"
-});
+// 	return db.fruit.create({      
+        
+// });
 })
 .then(function() {
   app.listen(process.env.PORT || 8080, function() {

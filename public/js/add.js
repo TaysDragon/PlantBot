@@ -9,7 +9,7 @@ $("#add-btn").on("click", function(event) {
     common_name: $("#commonName").val().trim(),
     cultivar: $("#cultivar").val().trim(),
     botanical_name: $("#botanicalName").val().trim(),
-    ripening_season: $("#ripe").val().trim()
+    ripening_season: $("#ripe").val().trim(),
     chill_min: $("#chillMin").val().trim(),
     chill_max: $("#chillMax").val().trim(),
     cold_hardiness: $("#cold").val().trim(),

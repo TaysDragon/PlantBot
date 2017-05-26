@@ -13,8 +13,8 @@ $.get("/api/all", function(data) {
     $("#allPlants").append(plantSection);
 
     // Now  we add our book data to the well we just placed on the page
-    $("#book-well-" + i).append("<h2>" + (i + 1) + ". " + data[i].title + "</h2>");
-    $("#book-well-" + i).append("<p>Author: " + data[i].common_name + "</p>");
+    $("#book-well-" + i).append("<h2>" + (i + 1) + ". " + data[i].column_name + "</h2>");
+    $("#book-well-" + i).append("<p><h2>Common name: </h2>" + data[i].common_name + "</p>");
       $("#book-well-" + i).append("<p>Cultivar: " + data[i].cultivar + "</p>");
       $("#book-well-" + i).append("<p>Botanical name: " + data[i].botanical_name + "</p>");
       $("#book-well-" + i).append("<p>Ripening season: " + data[i].ripening_season + "</p>");
