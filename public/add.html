@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <!-- Page Title -->
     <title>PlantBot</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!-- Latest bootstrap compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- PlantBot reset css should go first or it will override -->
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <!-- PlantBot css -->
@@ -16,70 +13,62 @@
 </head>
 
 <body>
-    <nav>
-        <div>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.html"><img alt="PlantBot" src="images/leaf-icon.png" width="80 px" height="80 px">
-                    <a href="/add"><span class="btn btn-success"></span> Add New Plant</a>
-                    <a href="/all"><span class="btn btn-success"></span> All Plants</a>
-                </a>
-                <h1>PlantBot</h1>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-    <div class="row">
-    <div class="col-lg-12">
-    <div class="panel panel-default">
-    
-        <h1>Add a plant</h1>
-    
-    <div class="panel-body">
-    <form action="" method="POST" role="form">
-    <div class="form-group">
-    <div class="form-group">
-    <label>Common Name:</label>
-    <input placeholder="Enter a plant name" type="text" class="form-control" id="commonName">
-    <label>Botanical Name:</label>
-    <input placeholder="Enter a botanical name" type="text" class="form-control" id="botanicalName">
-    <label>Cultivar:</label>
-    <input placeholder="Enter a cultivar" type="text" class="form-control" id="cultivar">
-    <label>Water Requirement:</label>
-    <input placeholder="Enter watering requirement" type="text" class="form-control" id="water">
-    <label>Lighting Requirement:</label>
-    <select class="form-control">
-    <option disabled selected value> -- select an option -- </option>
-        <option id="sun">Shade</option>
-        <option id="sun">Part Sun</option>
-        <option id="sun">Full Sun</option>
-        </select>
-    <label>Soil Type:</label>
-        <select class="form-control">
-            <option disabled selected value> -- select an option -- </option>
-            <option id="soil">Alkaline</option>
-            <option id="soil">Acidic</option>
-            <option id="soil">Neutral</option>
-        </select>
-    </div>
-    <br>
-    <div class="text-right">
-        <button type="submit" class="btn btn-success" id="add-btn"><span></span> Add plant</button>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        Copyright &copy; 2017 Sharon Oud. All Rights Reserved.
-    </footer>
-    <!-- Copyright &copy; 2017 Sharon Oud, Karin Rimstidt, Elizabeth Baskin. All Rights Reserved. -->
-
-        
-<!-- Custom Script -->
-<script src="js/add.js" type="text/javascript"></script>
+    <main class="container">
+        <nav id="header">
+            <a id="navPic" href="index.html"><img alt="PlantBot" src="images/leaf-icon.png" width="80 px" height="80 px">
+                <h1 id="navName">PlantBot</h1>
+                <a id="nav1" href="/add">Add New Plant</a>
+                <a id="nav2" href="/all">All Plants</a>
+            </a>
+        </nav>
+        <div id="headerIndex"></div>
+        <article class="center">
+            <h1>Add a plant</h1>
+            <form method="POST" role="form">
+                <section class="formGroup">
+                    <label class="left">Common Name:</label>
+                    <input placeholder="Enter a plant name" type="text" class="form-control" id="commonName">
+                </section>
+                <section class="formGroup">
+                    <label class="left">Botanical Name:</label>
+                    <input placeholder="Enter a botanical name" type="text" class="form-control" id="botanicalName">
+                    <section class="formGroup">
+                        <label>Cultivar:</label>
+                        <input placeholder="Enter a cultivar" type="text" class="form-control" id="cultivar">
+                    </section>
+                    <section class="formGroup">
+                        <label class="left">Water Requirement:</label>
+                        <input placeholder="Enter watering requirement" type="text" class="form-control" id="water">
+                    </section>
+                    <section class="formGroup">
+                        <label class="left">Lighting Requirement:</label>
+                        <select class="form-control">
+                            <option disabled selected value> -- select an option -- </option>
+                            <option id="sun">Shade</option>
+                            <option id="sun">Part Sun</option>
+                            <option id="sun">Full Sun</option>
+                        </select>
+                    </section>
+                    <section class="formGroup">
+                        <label class="left">Soil Type:</label>
+                        <select>
+                            <option disabled selected value> -- select an option -- </option>
+                            <option id="soil">Alkaline</option>
+                            <option id="soil">Acidic</option>
+                            <option id="soil">Neutral</option>
+                        </select>
+                    </section>
+                    <button type="submit" class="button buttonAlign" id="add-btn"><span></span> Add plant</button>
+            </form>
+        </article>
+        <!-- Footer -->
+        <footer class="footer">
+            Copyright &copy; 2017 Sharon Oud. All Rights Reserved.
+        </footer>
+        <!-- Copyright &copy; 2017 Sharon Oud, Karin Rimstidt, Elizabeth Baskin. All Rights Reserved. -->
+    </main>
+    <!-- Custom Script -->
+    <script src="js/add.js" type="text/javascript"></script>
 </body>
 
 </html>

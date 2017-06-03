@@ -20,49 +20,62 @@
                 <a id="nav1" href="/add">Add New Plant</a>
                 <a id="nav2" href="/all">All Plants</a>
             </a>
-            <span id="headerIndex"></span>
         </nav>
-        <div class="center" id="searchDIV">
-           
-                        <form role="form" id="form">
-                            <!-- Here we create the text box for capturing the search term-->
-                            <div class="form-group">
-                                <label for="search">Common Name:</label>
-                                <input placeholder="Enter a plant name" type="text" class="form-control" id="commonName">
-                                <label for="search">Botanical Name:</label>
-                                <input placeholder="Enter a botanical name" type="text" class="form-control" id="botanicalName">
-                                <label for="search">Cultivar:</label>
-                                <input placeholder="Enter a cultivar" type="text" class="form-control" id="cultivar">
-                                <label for="search">Water Requirement:</label>
-                                <input placeholder="Enter watering requirement" type="text" class="form-control" id="water">
-                                <label for="pwd">Lighting Requirement:</label>
-                                <select class="form-control" id="num-records-select">
-                                    <option disabled selected value> -- select an option -- </option>
-                                    <option id="sun">Shade</option>
-                                    <!-- Setting the option for 5 as default -->
-                                    <option id="sun">Part Sun</option>
-                                    <option id="sun">Full Sun</option>
-                                </select>
-                                <label for="pwd">Soil Type:</label>
-                                <select class="form-control" id="num-records-select">
-                                    <option disabled selected value> -- select an option -- </option>
-                                    <option id="soil">Alkaline</option>
-                                    <!-- Setting the option for 5 as default -->
-                                    <option id="soil">Acidic</option>
-                                    <option id="soil">Neutral</option>
-                                </select>
-                            </div>
-                            <button class="button buttonAlign" type="submit" id="search">Search</button>
-                            <button class="button buttonAlign" type="submit" id="clear">Clear Search</button>                            
-                        </form>
-                    </div>
-     
-        <div id="resultsDIV">
-            <h3 class="panel-title"><strong>Plants Database</strong></h3>
-        </div>
-        <div class="panel-body" id="results">
-            <!-- Content will go in here -->
-        </div>
+        <div id="headerIndex"></div>
+        <article class="center" id="searchDIV">
+            <h1>Search for Plant</h1>
+            <form role="form" id="form">
+                <!-- Here we create the text box for capturing the search term-->
+                <!-- class="left" , class="right" -->
+                <section class="formGroup">
+                    <label class="left" for="search">Common Name:</label>
+                    <input placeholder="Enter a plant name" type="text" class="right" id="commonName">
+                </section>
+                <section class="formGroup">
+                    <label class="left" for="search">Botanical Name:</label>
+                    <input placeholder="Enter a botanical name" type="text" class="right" id="botanicalName">
+                </section>
+                <section class="formGroup">
+                    <label class="left" for="search">Cultivar:</label>
+                    <input placeholder="Enter a cultivar" type="text" class="right" id="cultivar">
+                </section>
+                <section class="formGroup">
+                    <label class="left" for="search">Water Requirement:</label>
+                    <input placeholder="Enter watering requirement" type="text" class="right" id="water">
+                </section>
+                <section class="formGroup">
+                    <label class="left" for="light">Lighting Requirement:</label>
+                    <select class="right" id="sun">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option id="sun">Shade</option>
+                        <!-- Setting the option for 5 as default -->
+                        <option id="sun">Part Sun</option>
+                        <option id="sun">Full Sun</option>
+                    </select>
+                </section>
+                <section class="formGroup">
+                    <label class="left" for="soil">Soil Type:</label>
+                    <select class="right" id="num-records-select">
+                        <option disabled selected value> -- select an option -- </option>
+                        <option id="soil">Alkaline</option>
+                        <!-- Setting the option for 5 as default -->
+                        <option id="soil">Acidic</option>
+                        <option id="soil">Neutral</option>
+                    </select>
+                </section>
+                <br>
+                <button class="button buttonAlign" type="submit" id="search">Search</button>
+                <button class="button buttonAlign" type="submit" id="clear">Clear Search</button>
+            </form>
+        </article>
+        <section id="resultsDIV">
+            <article class="center">
+                <h1>Search Results</h1>
+                <div id="results">
+                    <!-- Content will go in here -->
+                </div>
+            </article>
+        </section>
         <!-- Footer -->
         <footer class="footer">
             Copyright &copy; 2017 Sharon Oud. All Rights Reserved.
