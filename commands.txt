@@ -15,7 +15,7 @@ git push origin master
 
 
 
-heroku create plantbot8
+heroku create plantbot80
 
 
 
