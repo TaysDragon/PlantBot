@@ -15,14 +15,13 @@ git push origin master
 
 
 
-heroku 
-
-create plant80
+heroku create plantbot8
 
 
 
 
 git remote -v
+
 
 
 
