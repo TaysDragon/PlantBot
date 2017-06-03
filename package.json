@@ -1,36 +1,29 @@
 {
   "name": "plantbot",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "engines": {"node": "7.7.1"},
+  "version": "1.0.0",
+  "description": "PlantBot Search Tool",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.16.1",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "method-override": "^2.3.8",
+    "mysql": "^2.12.0",
+    "sequelize": "^3.27.0",
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "method-override": "^2.3.5",
-    "mysql": "^2.12.0",
-    "sequelize": "^3.27.0",
-    "axiom": "^0.1.6"
-  },
   "repository": {
-        "type": "git",
-        "url": "git+https://github.com/TaysDragon/PlantBot.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/TaysDragon/PlantBot/issues"
-    },
-    "homepage": "https://github.com/TaysDragon/PlantBot#readme",
-
-    "production": {
-        "USE_ENV_VARIABLE": "JAWSDB_URL",
-        "dialect": "mysql"
-    }
+    "type": "git",
+    "url": "git+https://github.com/TaysDragon/PlantBot.git"
+  },
+  "author": "Sharon Oud",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TaysDragon/PlantBot/issues"
+  },
+  "homepage": "https://github.com/TaysDragon/PlantBot#readme"
 }
