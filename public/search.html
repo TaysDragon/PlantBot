@@ -6,8 +6,6 @@
     <!-- Page Title -->
     <title>PlantBot</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!-- Latest bootstrap compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- PlantBot reset css should go first or it will override -->
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <!-- PlantBot css -->
@@ -15,75 +13,61 @@
 </head>
 
 <body>
-    <nav>
-        <div>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="search.html"><img alt="PlantBot" src="images/leaf-icon.png" width="80 px" height="80 px">
-                    <a href="/add"><span class="btn btn-success"></span> Add New Plant</a>
-                    <a href="/all"><span class="btn btn-success"></span> All Plants</a>
-                </a>
-                <h1>PlantBot</h1>
-            </div>
-        </div>
-    </nav>
-    <div id="searchDIV">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <form class="center" role="form" style="width: 500px" id="form">
-                        <!-- Here we create the text box for capturing the search term-->
-                        <div class="form-group">
-                            <label for="search">Common Name:</label>
-                            <input placeholder="Enter a plant name" type="text" class="form-control" id="commonName">
-                            <label for="search">Botanical Name:</label>
-                            <input placeholder="Enter a botanical name" type="text" class="form-control" id="botanicalName">
-                            <label for="search">Cultivar:</label>
-                            <input placeholder="Enter a cultivar" type="text" class="form-control" id="cultivar">
-                            <label for="search">Water Requirement:</label>
-                            <input placeholder="Enter watering requirement" type="text" class="form-control" id="water">
-                            <label for="pwd">Lighting Requirement:</label>
-                            <select class="form-control" id="num-records-select">
-                                <option disabled selected value> -- select an option -- </option>
-                                <option id="sun">Shade</option>
-                                <!-- Setting the option for 5 as default -->
-                                <option id="sun">Part Sun</option>
-                                <option id="sun">Full Sun</option>
-                            </select>
-                            <label for="pwd">Soil Type:</label>
-                            <select class="form-control" id="num-records-select">
-                                <option disabled selected value> -- select an option -- </option>
-                                <option id="soil">Alkaline</option>
-                                <!-- Setting the option for 5 as default -->
-                                <option id="soil">Acidic</option>
-                                <option id="soil">Neutral</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-success" id="search">Search</button>
-                        <button type="submit" class="btn btn-success" id="clear">Clear Search</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="resultsDIV">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><strong>Plants Database</strong></h3>
-                        </div>
-                        <div class="panel-body" id="results">
-                            <!-- Content will go in here -->
-                        </div>
+    <main class="container">
+        <nav id="header">
+            <a id="navPic" href="index.html"><img alt="PlantBot" src="images/leaf-icon.png" width="80 px" height="80 px">
+                <h1 id="navName">PlantBot</h1>
+                <a id="nav1" href="/add">Add New Plant</a>
+                <a id="nav2" href="/all">All Plants</a>
+            </a>
+            <span id="headerIndex"></span>
+        </nav>
+        <div class="center" id="searchDIV">
+           
+                        <form role="form" id="form">
+                            <!-- Here we create the text box for capturing the search term-->
+                            <div class="form-group">
+                                <label for="search">Common Name:</label>
+                                <input placeholder="Enter a plant name" type="text" class="form-control" id="commonName">
+                                <label for="search">Botanical Name:</label>
+                                <input placeholder="Enter a botanical name" type="text" class="form-control" id="botanicalName">
+                                <label for="search">Cultivar:</label>
+                                <input placeholder="Enter a cultivar" type="text" class="form-control" id="cultivar">
+                                <label for="search">Water Requirement:</label>
+                                <input placeholder="Enter watering requirement" type="text" class="form-control" id="water">
+                                <label for="pwd">Lighting Requirement:</label>
+                                <select class="form-control" id="num-records-select">
+                                    <option disabled selected value> -- select an option -- </option>
+                                    <option id="sun">Shade</option>
+                                    <!-- Setting the option for 5 as default -->
+                                    <option id="sun">Part Sun</option>
+                                    <option id="sun">Full Sun</option>
+                                </select>
+                                <label for="pwd">Soil Type:</label>
+                                <select class="form-control" id="num-records-select">
+                                    <option disabled selected value> -- select an option -- </option>
+                                    <option id="soil">Alkaline</option>
+                                    <!-- Setting the option for 5 as default -->
+                                    <option id="soil">Acidic</option>
+                                    <option id="soil">Neutral</option>
+                                </select>
+                            </div>
+                            <button class="button buttonAlign" type="submit" id="search">Search</button>
+                            <button class="button buttonAlign" type="submit" id="clear">Clear Search</button>                            
+                        </form>
                     </div>
-                </div>
-            </div>
+     
+        <div id="resultsDIV">
+            <h3 class="panel-title"><strong>Plants Database</strong></h3>
         </div>
-    </div>
-    <div class="footer">
-        Copyright &copy; 2017 Sharon Oud. All Rights Reserved.
-    </div>
+        <div class="panel-body" id="results">
+            <!-- Content will go in here -->
+        </div>
+        <!-- Footer -->
+        <footer class="footer">
+            Copyright &copy; 2017 Sharon Oud. All Rights Reserved.
+        </footer>
+    </main>
     <!-- Custom Script -->
     <script src="js/search.js" type="text/javascript"></script>
 </body>
