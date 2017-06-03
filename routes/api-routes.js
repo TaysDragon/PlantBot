@@ -36,6 +36,81 @@ module.exports = function(app) {
 
     });
 
+    // Get all plants of a specific botanical name
+    app.get("/api/:BotanicalName", function(req, res) {
+
+        if (req.params.BotanicalName) {
+            db.fruit.findAll({
+                where: {
+                    botanical_name: req.params.BotanicalName
+                }
+            }).then(function(results) {
+                res.json(results);
+            });
+        }
+
+    });
+
+    // Get all plants of a specific cultivar
+    app.get("/api/:cultivar", function(req, res) {
+
+        if (req.params.cultivar) {
+            db.fruit.findAll({
+                where: {
+                    cultivar: req.params.cultivar
+                }
+            }).then(function(results) {
+                res.json(results);
+            });
+        }
+
+    });
+
+    // Get all plants of specific watering requirement
+    app.get("/api/:water", function(req, res) {
+
+        if (req.params.water) {
+            db.fruit.findAll({
+                where: {
+                    water_needs: req.params.water
+                }
+            }).then(function(results) {
+                res.json(results);
+            });
+        }
+
+    });
+
+    // Get all plants of a specific sun or shade preference
+    app.get("/api/:sun", function(req, res) {
+
+        if (req.params.sun) {
+            db.fruit.findAll({
+                where: {
+                    common_name: req.params.sun
+                }
+            }).then(function(results) {
+                res.json(results);
+            });
+        }
+
+    });
+
+    // Get all plants of a specific botanical name
+    app.get("/api/:soil", function(req, res) {
+
+        if (req.params.Soil) {
+            db.fruit.findAll({
+                where: {
+                    soil_type: req.params.Soil
+                }
+            }).then(function(results) {
+                res.json(results);
+            });
+        }
+
+    });
+
 
 
 

@@ -1,7 +1,12 @@
 // Variable to hold returned data
 var plantSearched;
 var results;
-var str;
+var common_name;
+var botanical_name;
+var cultivar = $("#cultivar").val().trim();
+var water_needs;
+var sun;
+var soil_type;
 
 $(document).ready(function() {
     //The results section starts hidden and will toggle to show
@@ -12,81 +17,127 @@ $(document).ready(function() {
 
 
         // Save the plant they typed into the earch input
-        var plantSearched = $("#commonName").val().trim() || $("#botanicalName").val().trim() ||
-        $("#cultivar").val().trim() ||
-        $("#water").val().trim() ||
-        $("#sun").val().trim() ||
-        $("#soil").val().trim();
-        plantSearched = plantSearched;
-        str = plantSearched;
-        console.log("search.js 14 plantSearched = " + plantSearched);
+        plantSearched = $("#commonName").val() || $("#botanicalName").val() ||
+            $("#cultivar").val() ||
+            $("#water").val() ||
+            $("#sun").val() ||
+            $("#soil").val();
+
+        console.log("search.js plantSearched " + plantSearched);
+
         toProperCase();
 
 
+        if ($("#commonName").val().trim() !== null) {
+            searchCommonName();
+        } else if ($("#botanicalName").val().trim() !== null) {
+            searchBotanicalName();
+        } else if ($("#cultivar").val().trim() !== null) {
+            searchCultivar();
+        } else if ($("#water").val().trim() !== null) {
+            searchWater();
+        } else if ($("#sun").val().trim() !== null) {
+            searchSun();
+        } else if ($("#soil").val().trim() !== null) {
+            searchSoil();
+        };
 
-        // Make an AJAX get request to our api, including the user's book in the url
-        $.get("/api/" + plantSearched, function(data) {
-            console.log("search.js 19" + data);
-            $.post("/api/" + plantSearched, data);
-            // render function to send search results data to the page
-            renderPlants(data);
-            $("#searchDIV, #resultsDIV").toggle();
-        });
+
+        function searchCommonName() {
+            // Make an AJAX get request to our api, including the user's book in the url
+            $.get("/api/" + plantSearched, function(data) {
+                console.log("search.js searchCommonName " + data);
+                $.post("/api/" + plantSearched, data);
+                // render function to send search results data to the page
+                renderPlants(data);
+            });
+        };
+
+
+        function searchBotanicalName() {
+            // Make an AJAX get request to our api, including the user's book in the url
+            $.get("/api/" + str, function(data) {
+                console.log("search.js searchBotanicalName " + data);
+                $.post("/api/" + str, data);
+                // render function to send search results data to the page
+                renderPlants(data);
+            });
+        };
+
+        function searchCultivar() {
+            // Make an AJAX get request to our api, including the user's book in the url
+            $.get("/api/" + str, function(data) {
+                console.log("search.js function searchCultivar " + data);
+                $.post("/api/" + str, data);
+                // render function to send search results data to the page
+                renderPlants(data);
+            });
+        };
+
+        function searchWater() {
+            // Make an AJAX get request to our api, including the user's book in the url
+            $.get("/api/" + str, function(data) {
+                console.log("search.js searchWater " + data);
+                $.post("/api/" + str, data);
+                // render function to send search results data to the page
+                renderPlants(data);
+            });
+        };
+
+        function searchSun() {
+            // Make an AJAX get request to our api, including the user's book in the url
+            $.get("/api/" + str, function(data) {
+                console.log("search.js searchSun " + data);
+                $.post("/api/" + str, data);
+                // render function to send search results data to the page
+                renderPlants(data);
+            });
+        };
+
+        function searchSoil() {
+            // Make an AJAX get request to our api, including the user's book in the url
+            $.get("/api/" + str, function(data) {
+                console.log("search.js searchSoil " + data);
+                $.post("/api/" + str, data);
+                // render function to send search results data to the page
+                renderPlants(data);
+            });
+        };
+
+
+
+        $("#searchDIV, #resultsDIV").toggle();
     });
 });
 
 
 
-function toProperCase(){
-temp_arr = str.split('.');
-for (i = 0; i < temp_arr.length; i++) {
-temp_arr[i]=temp_arr[i].trim()
-temp_arr[i] = temp_arr[i].charAt(0).toUpperCase() + temp_arr[i].substr(1).toLowerCase();
+
+function toProperCase() {
+    temp_arr = plantSearched.split('.');
+    for (i = 0; i < temp_arr.length; i++) {
+        temp_arr[i] = temp_arr[i].trim()
+        temp_arr[i] = temp_arr[i].charAt(0).toUpperCase() + temp_arr[i].substr(1).toLowerCase();
+    }
+    plantSearched = temp_arr.join('. ');
+    return plantSearched;
+    console.log("toProperCase " + plantSearched);
 }
-str=temp_arr.join('. ') + '.';
-console.log("toProperCase "+str);
-}
 
-// When user hits the author-search-btn
-// $("#author-search-btn").on("click", function() {
 
-//   // Save the authorthey typed into the author-search input
-//   var authorSearched = $("#author-search").val().trim();
 
-//   // Make an AJAX get request to our api, including the user's author in the url
-//   $.get("/api/author/" + authorSearched, function(data) {
 
-//     // Log the data to the console
-//     console.log(data);
-//     // Call our renderBooks function to add our books to the page
-//     renderBooks(data);
 
-//   });
-// });
 
-// When user hits the genre-search-btn
-// $("#genre-search-btn").on("click", function() {
 
-//   // Save the book they typed into the genre-search input
-//   var genreSearched = $("#genre-search").val().trim();
 
-//   // Make an AJAX get request to our api, including the user's genre in the url
-//   $.get("/api/genre/" + genreSearched, function(data) {
-
-//     console.log(data);
-//     // Call our renderBooks function to add our books to the page
-//     renderBooks(data);
-
-//   });
-
-// });
 
 function renderPlants(data) {
     if (data.length !== 0) {
         $("#results").empty();
         $("#results").show();
         $.post("/api/plantSearched", data);
-        console.log("search.js 89 " + data)
+        console.log("search.js renderPlants " + data)
 
 
         for (var i = 0; i < data.length; i++) {
@@ -138,4 +189,5 @@ function renderPlants(data) {
 
         });
     }
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
 };
