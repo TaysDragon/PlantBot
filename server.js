@@ -44,7 +44,7 @@ db.sequelize.sync({ force: false })
 // });
 })
 .then(function() {
-  app.listen(process.env.PORT || 8080, function() {
+  app.listen(PORT, function() {
     console.log("App listening on port " + PORT);
   });
 });
