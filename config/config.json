@@ -1,23 +1,20 @@
 {
-  "development": {
-    "username": "root",
-    "password": "root",
-    "database": "plants_db",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "test": {
-    "username": "root",
-    "password": "root",
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "production": {
-    "username": "vmefs065wqneognl",
-    "password": "mwd0x581a8o0oomi",
-    "database": "khj2vbu7xzncf8xu",
-    "host": "s54ham9zz83czkff.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
-  }
+    "development": {
+        "username": "root",
+        "password": "root",
+        "database": "plants_db",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    },
+    "test": {
+        "username": "root",
+        "password": "root",
+        "database": "database_test",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+    },
+    "production": {
+        "USE_ENV_VARIABLE": "JawsDB_URL"
+        "dialect": "mysql"
+    }
 }
