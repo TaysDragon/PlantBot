@@ -2,12 +2,12 @@
 
 html {
     background: url(../images/tropical.jpg) no-repeat center center fixed;
-    background-color: rgba(51, 153, 51, 0.9) !important;
+    background-color: rgba(51, 153, 51, 0.9);
     /*background-blend-mode: lighten;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover !important;
+    background-size: cover;
     z-index: 1;
 }
 
@@ -71,11 +71,11 @@ body {
 }
 
 .center {
-    width: 50% !important;
-    text-align: center !important;
+    width: 50%;
+    text-align: center;
     line-height: 50px;
     margin: auto;
-    color: #006633 !important;
+    color: #006633;
     border: 3px solid #006633;
     border-radius: 7px;
     -webkit-border-radius: 7px;
@@ -156,8 +156,8 @@ input:focus {
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     padding: 20px;
-    color: #ffffff !important;
-    text-decoration: none !important;
+    color: #ffffff;
+    text-decoration: none;
     background-color: #5cb85c;
     font-size: 30px;
     font-family: 'Georgia', Times, Times New Roman, serif;
@@ -165,7 +165,7 @@ input:focus {
 
 .button:hover {
     text-decoration: none;
-    color: #006633 !important;
+    color: #006633;
     cursor: pointer;
 }
 
@@ -182,9 +182,9 @@ a {
 }
 
 .footer {
-    text-align: center !important;
+    text-align: center;
     width: 100%;
-    font-weight: 700 !important;
+    font-weight: 700;
     height: 50px;
     margin-bottom: -50px;
     margin-top: auto
@@ -196,6 +196,6 @@ nav {
 
 footer {
     align-self: flex-end;
-    padding-top: 50px !important;
+    padding-top: 50px;
     margin-top: auto
 }

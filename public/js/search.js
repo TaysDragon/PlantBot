@@ -3,10 +3,30 @@ var plantSearched;
 var results;
 var common_name;
 var botanical_name;
-var cultivar = $("#cultivar").val().trim();
+var cultivar;
 var water_needs;
 var sun;
 var soil_type;
+
+var fields = [
+    { field: 'common_name', label: 'Common name' },
+    { field: 'cultivar', label: 'Cultivar' },
+    { field: 'botanical_name', label: 'Botanical name' },
+    { field: 'ripening_season', label: 'Ripening season' },
+    { field: 'chill_min', label: 'Chill min' },
+    { field: 'chill_max', label: 'Chill max' },
+    { field: 'cold_hardiness', label: 'Cold Hardiness' },
+    { field: 'fruit', label: 'Fruit' },
+    { field: 'water_needs', label: 'Water needs' },
+    { field: 'sun', label: 'Sun' },
+    { field: 'soil_type', label: 'Soil type' },
+    { field: 'ph_low', label: 'PH low' },
+    { field: 'ph_high', label: 'PH high' },
+    { field: 'fertilizer', label: 'Fertilizer' },
+    { field: 'originating_region', label: 'Originating region' },
+    { field: 'description', label: 'Description' },
+    { field: 'parentage', label: 'Parentage' }
+]
 
 $(document).ready(function() {
     //The results section starts hidden and will toggle to show
@@ -125,13 +145,6 @@ function toProperCase() {
 }
 
 
-
-
-
-
-
-
-
 function renderPlants(data) {
     if (data.length !== 0) {
         $("#results").empty();
@@ -142,29 +155,18 @@ function renderPlants(data) {
 
         for (var i = 0; i < data.length; i++) {
             var div = $("<div>");
-            if (data[i].common_name === undefined || null) {
-                console.log("No data.");
-            } else {
 
-                div.append("<p> " + data[i].common_name + "</p>");
+                for (var j = 0; j < fields.length; j++) {
+                    var field = fields[j].field;
+                    var label = fields[j].label;
+                    var value = data[i][field];
 
-            }
-            div.append("<p><h2>Cultivar:  </h2> " + data[i].cultivar + "</p>");
-            div.append("<p><h2>Botanical name:  </h2> " + data[i].botanical_name + "</p>");
-            div.append("<p> <h2>Ripening season:  </h2>" + data[i].ripening_season + "</p>");
-            div.append("<p><h2>Chill min:  </h2> " + data[i].chill_min + "</p>");
-            div.append("<p><h2>Chill max:  </h2> " + data[i].chill_max + "</p>");
-            div.append("<p><h2>Cold Hardiness:  </h2> " + data[i].cold_hardiness + "</p>");
-            div.append("<p> <h2>Fruit:  </h2>" + data[i].fruit + "</p>");
-            div.append("<p><h2>Water needs:  </h2> " + data[i].water_needs + "</p>");
-            div.append("<p><h2>Sun:  </h2> " + data[i].sun + "</p>");
-            div.append("<p><h2>Soil type:  </h2> " + data[i].soil_type + "</p>");
-            div.append("<p><h2>PH low:  </h2> " + data[i].ph_low + "</p>");
-            div.append("<p><h2>PH high:  </h2> " + data[i].ph_high + "</p>");
-            div.append("<p> <h2>Fertilizer:  </h2>" + data[i].fertilizer + "</p>");
-            div.append("<p><h2>Originating region:  </h2> " + data[i].originating_region + "</p>");
-            div.append("<p> <h2>Description:  </h2>" + data[i].description + "</p>");
-            div.append("<p> <h2>Parentage:  </h2>" + data[i].parentage + "</p><hr>");
+                    if (value) {
+                        div.append("<p><h2>" + label + ":  </h2> " + value + "</p>");
+                    }
+
+                }
+                div.append("<hr>");
 
             $("#results").append(div);
         }
