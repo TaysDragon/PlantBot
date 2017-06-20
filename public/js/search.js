@@ -1,12 +1,6 @@
 // Variable to hold returned data
 var plantSearched;
 var results;
-var common_name;
-var botanical_name;
-var cultivar;
-var water_needs;
-var sun;
-var soil_type;
 
 var fields = [
     { field: 'common_name', label: 'Common name' },
@@ -26,7 +20,29 @@ var fields = [
     { field: 'originating_region', label: 'Originating region' },
     { field: 'description', label: 'Description' },
     { field: 'parentage', label: 'Parentage' }
-]
+];
+
+// The code below handles the case where we want to get plant info for a specific plant
+// Looks for a query param in the url for common_name
+var url = window.location.search;
+var commonName;
+var botanicalName;
+var cultivar;
+if (url.indexOf("?common_name=") !== -1) {
+    commonName = url.split("=")[1];
+    searchPlants(commonName);
+    console.log(url);
+} // Otherwise if we have a botanical name in our url
+else if (url.indexOf("?botanical_name=") !== -1) {
+    botanicalName = url.split("=")[1];
+    searchPlants(botanicalName);
+    console.log(url);
+} // Otherwise if we have a cultivar in our url
+else if (url.indexOf("?cultivar=") !== -1) {
+    cultivar = url.split("=")[1];
+    searchPlants(cultivar);
+    console.log(url);
+}
 
 $(document).ready(function() {
     //The results section starts hidden and will toggle to show
@@ -36,125 +52,53 @@ $(document).ready(function() {
         event.preventDefault();
 
 
-        // Save the plant they typed into the earch input
+        // Save the plant they typed into the search input
         plantSearched = $("#commonName").val() || $("#botanicalName").val() ||
             $("#cultivar").val() ||
             $("#water").val() ||
             $("#sun").val() ||
             $("#soil").val();
 
-        console.log("search.js plantSearched " + plantSearched);
-
         toProperCase();
-
-
-        if ($("#commonName").val().trim() !== null) {
-            searchCommonName();
-        } else if ($("#botanicalName").val().trim() !== null) {
-            searchBotanicalName();
-        } else if ($("#cultivar").val().trim() !== null) {
-            searchCultivar();
-        } else if ($("#water").val().trim() !== null) {
-            searchWater();
-        } else if ($("#sun").val().trim() !== null) {
-            searchSun();
-        } else if ($("#soil").val().trim() !== null) {
-            searchSoil();
-        };
-
-
-        function searchCommonName() {
-            // Make an AJAX get request to our api, including the user's book in the url
-            $.get("/api/" + plantSearched, function(data) {
-                console.log("search.js searchCommonName " + data);
-                $.post("/api/" + plantSearched, data);
-                // render function to send search results data to the page
-                renderPlants(data);
-            });
-        };
-
-
-        function searchBotanicalName() {
-            // Make an AJAX get request to our api, including the user's book in the url
-            $.get("/api/" + str, function(data) {
-                console.log("search.js searchBotanicalName " + data);
-                $.post("/api/" + str, data);
-                // render function to send search results data to the page
-                renderPlants(data);
-            });
-        };
-
-        function searchCultivar() {
-            // Make an AJAX get request to our api, including the user's book in the url
-            $.get("/api/" + str, function(data) {
-                console.log("search.js function searchCultivar " + data);
-                $.post("/api/" + str, data);
-                // render function to send search results data to the page
-                renderPlants(data);
-            });
-        };
-
-        function searchWater() {
-            // Make an AJAX get request to our api, including the user's book in the url
-            $.get("/api/" + str, function(data) {
-                console.log("search.js searchWater " + data);
-                $.post("/api/" + str, data);
-                // render function to send search results data to the page
-                renderPlants(data);
-            });
-        };
-
-        function searchSun() {
-            // Make an AJAX get request to our api, including the user's book in the url
-            $.get("/api/" + str, function(data) {
-                console.log("search.js searchSun " + data);
-                $.post("/api/" + str, data);
-                // render function to send search results data to the page
-                renderPlants(data);
-            });
-        };
-
-        function searchSoil() {
-            // Make an AJAX get request to our api, including the user's book in the url
-            $.get("/api/" + str, function(data) {
-                console.log("search.js searchSoil " + data);
-                $.post("/api/" + str, data);
-                // render function to send search results data to the page
-                renderPlants(data);
-            });
-        };
-
-
+        console.log("search.js plantSearched " + plantSearched);
+        searchPlants();
 
         $("#searchDIV, #resultsDIV").toggle();
     });
-});
 
 
+    function toProperCase() {
+        temp_arr = plantSearched.split('.');
+        for (i = 0; i < temp_arr.length; i++) {
+            temp_arr[i] = temp_arr[i].trim()
+            temp_arr[i] = temp_arr[i].charAt(0).toUpperCase() + temp_arr[i].substr(1).toLowerCase();
+        }
+        plantSearched = temp_arr.join('. ');
+        return plantSearched;
+        console.log("toProperCase " + plantSearched);
+    };
+
+    function searchPlants() {
+        // Make an AJAX get request to our api, including the searched plant in the url
+        $.get("/api/" + plantSearched, function(data) {
+            console.log("search.js searchPlants initiated " + data);
+            // $.post("/api/" + plantSearched, data);
+            // render function to send search results data to the page
+            renderPlants(data);
+        });
+    };
+
+    // This function grabs plants from the database and updates the view
+    function renderPlants(data) {
+        if (data.length !== 0) {
+            $("#results").empty();
+            $("#results").show();
+            // $.get("/api/" + plantSearched, data);
+            console.log("search.js renderPlants " + data)
 
 
-function toProperCase() {
-    temp_arr = plantSearched.split('.');
-    for (i = 0; i < temp_arr.length; i++) {
-        temp_arr[i] = temp_arr[i].trim()
-        temp_arr[i] = temp_arr[i].charAt(0).toUpperCase() + temp_arr[i].substr(1).toLowerCase();
-    }
-    plantSearched = temp_arr.join('. ');
-    return plantSearched;
-    console.log("toProperCase " + plantSearched);
-}
-
-
-function renderPlants(data) {
-    if (data.length !== 0) {
-        $("#results").empty();
-        $("#results").show();
-        $.post("/api/plantSearched", data);
-        console.log("search.js renderPlants " + data)
-
-
-        for (var i = 0; i < data.length; i++) {
-            var div = $("<div>");
+            for (var i = 0; i < data.length; i++) {
+                var div = $("<div>");
 
                 for (var j = 0; j < fields.length; j++) {
                     var field = fields[j].field;
@@ -166,30 +110,37 @@ function renderPlants(data) {
                     }
 
                 }
+                //             var deleteBtn = $("<button>");
+                // deleteBtn.text("Delete");
+                // deleteBtn.addClass("delete btn btn-danger");
+                var editBtn = $("<button>");
+                editBtn.text("EDIT");
+                editBtn.addClass("edit buttonAlign");
                 div.append("<hr>");
 
-            $("#results").append(div);
+                $("#results").append(div);
+            }
         }
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
+    };
+
+    // $(".delete").click(function() {
+
+    //     var info = {
+    //         id: $(this).attr("data-id")
+    //     };
+
+    //     $.post("/api/delete", info)
+    //         // On success, run the following code
+    //         .done(function(deldata) {
+    //             // Log the data we found
+    //             console.log(deldata);
+    //             console.log("Deleted Successfully!");
+    //         });
+
+    //     $(this).closest("div").remove();
+
+    // });
 
 
-
-        $(".delete").click(function() {
-
-            var info = {
-                id: $(this).attr("data-id")
-            };
-
-            $.post("/api/delete", info)
-                // On success, run the following code
-                .done(function(deldata) {
-                    // Log the data we found
-                    console.log(deldata);
-                    console.log("Deleted Successfully!");
-                });
-
-            $(this).closest("div").remove();
-
-        });
-    }
-    $('html, body').animate({ scrollTop: 0 }, 'fast');
-};
+}); //goes to document on ready

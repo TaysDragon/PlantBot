@@ -18,17 +18,17 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/index.html"));
     });
 
-    // index route loads search.html
+    // search route loads search.html
     app.get("/search", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/search.html"));
     });
 
-    // add route loads the add.html page, where users can enter new books to the db
+    // add route loads the add.html page, where users can enter new plants to the db
     app.get("/add", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/add.html"));
     });
 
-    // all route loads the all.html page, where all books in the db are displayed
+    // all route loads the all.html page, where all plants in the db are displayed
     app.get("/all", function(req, res) {
         res.sendFile(path.join(__dirname, "../public/all.html"));
     });
