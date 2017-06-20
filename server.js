@@ -10,7 +10,6 @@ var methodOverride = require("method-override");
 var axios = require('axios');
 var sequelize = require('sequelize');
 var models = require('./models');
-var routes = require('./routes');
 
 
 // Sets up the Express App
