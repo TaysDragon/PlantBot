@@ -1,48 +1,7 @@
 // Variable to hold returned data
 var plantSearched;
 var results;
-
-var fields = [
-    { field: 'common_name', label: 'Common name' },
-    { field: 'cultivar', label: 'Cultivar' },
-    { field: 'botanical_name', label: 'Botanical name' },
-    { field: 'ripening_season', label: 'Ripening season' },
-    { field: 'chill_min', label: 'Chill min' },
-    { field: 'chill_max', label: 'Chill max' },
-    { field: 'cold_hardiness', label: 'Cold Hardiness' },
-    { field: 'fruit', label: 'Fruit' },
-    { field: 'water_needs', label: 'Water needs' },
-    { field: 'sun', label: 'Sun' },
-    { field: 'soil_type', label: 'Soil type' },
-    { field: 'ph_low', label: 'PH low' },
-    { field: 'ph_high', label: 'PH high' },
-    { field: 'fertilizer', label: 'Fertilizer' },
-    { field: 'originating_region', label: 'Originating region' },
-    { field: 'description', label: 'Description' },
-    { field: 'parentage', label: 'Parentage' }
-];
-
-// The code below handles the case where we want to get plant info for a specific plant
-// Looks for a query param in the url for common_name
-var url = window.location.search;
-var commonName;
-var botanicalName;
-var cultivar;
-if (url.indexOf("?common_name=") !== -1) {
-    commonName = url.split("=")[1];
-    searchPlants(commonName);
-    console.log(url);
-} // Otherwise if we have a botanical name in our url
-else if (url.indexOf("?botanical_name=") !== -1) {
-    botanicalName = url.split("=")[1];
-    searchPlants(botanicalName);
-    console.log(url);
-} // Otherwise if we have a cultivar in our url
-else if (url.indexOf("?cultivar=") !== -1) {
-    cultivar = url.split("=")[1];
-    searchPlants(cultivar);
-    console.log(url);
-}
+var str;
 
 $(document).ready(function() {
     //The results section starts hidden and will toggle to show
@@ -52,95 +11,131 @@ $(document).ready(function() {
         event.preventDefault();
 
 
-        // Save the plant they typed into the search input
-        plantSearched = $("#commonName").val() || $("#botanicalName").val() ||
-            $("#cultivar").val() ||
-            $("#water").val() ||
-            $("#sun").val() ||
-            $("#soil").val();
-
+        // Save the plant they typed into the earch input
+        var plantSearched = $("#commonName").val().trim() || $("#botanicalName").val().trim() ||
+        $("#cultivar").val().trim() ||
+        $("#water").val().trim() ||
+        $("#sun").val().trim() ||
+        $("#soil").val().trim();
+        plantSearched = plantSearched;
+        str = plantSearched;
+        console.log("search.js 14 plantSearched = " + plantSearched);
         toProperCase();
-        console.log("search.js plantSearched " + plantSearched);
-        searchPlants();
-
-        $("#searchDIV, #resultsDIV").toggle();
-    });
 
 
-    function toProperCase() {
-        temp_arr = plantSearched.split('.');
-        for (i = 0; i < temp_arr.length; i++) {
-            temp_arr[i] = temp_arr[i].trim()
-            temp_arr[i] = temp_arr[i].charAt(0).toUpperCase() + temp_arr[i].substr(1).toLowerCase();
-        }
-        plantSearched = temp_arr.join('. ');
-        return plantSearched;
-        console.log("toProperCase " + plantSearched);
-    };
 
-    function searchPlants() {
-        // Make an AJAX get request to our api, including the searched plant in the url
+        // Make an AJAX get request to our api, including the user's book in the url
         $.get("/api/" + plantSearched, function(data) {
-            console.log("search.js searchPlants initiated " + data);
-            // $.post("/api/" + plantSearched, data);
+            console.log("search.js 19" + data);
+            $.post("/api/" + plantSearched, data);
             // render function to send search results data to the page
             renderPlants(data);
+            $("#searchDIV, #resultsDIV").toggle();
         });
-    };
-
-    // This function grabs plants from the database and updates the view
-    function renderPlants(data) {
-        if (data.length !== 0) {
-            $("#results").empty();
-            $("#results").show();
-            // $.get("/api/" + plantSearched, data);
-            console.log("search.js renderPlants " + data)
+    });
+});
 
 
-            for (var i = 0; i < data.length; i++) {
-                var div = $("<div>");
 
-                for (var j = 0; j < fields.length; j++) {
-                    var field = fields[j].field;
-                    var label = fields[j].label;
-                    var value = data[i][field];
+function toProperCase(){
+temp_arr = str.split('.');
+for (i = 0; i < temp_arr.length; i++) {
+temp_arr[i]=temp_arr[i].trim()
+temp_arr[i] = temp_arr[i].charAt(0).toUpperCase() + temp_arr[i].substr(1).toLowerCase();
+}
+str=temp_arr.join('. ') + '.';
+console.log("toProperCase "+str);
+}
 
-                    if (value) {
-                        div.append("<p><h2>" + label + ":  </h2> " + value + "</p>");
-                    }
+// When user hits the author-search-btn
+// $("#author-search-btn").on("click", function() {
 
-                }
-                //             var deleteBtn = $("<button>");
-                // deleteBtn.text("Delete");
-                // deleteBtn.addClass("delete btn btn-danger");
-                var editBtn = $("<button>");
-                editBtn.text("EDIT");
-                editBtn.addClass("edit buttonAlign");
-                div.append("<hr>");
+//   // Save the authorthey typed into the author-search input
+//   var authorSearched = $("#author-search").val().trim();
 
-                $("#results").append(div);
+//   // Make an AJAX get request to our api, including the user's author in the url
+//   $.get("/api/author/" + authorSearched, function(data) {
+
+//     // Log the data to the console
+//     console.log(data);
+//     // Call our renderBooks function to add our books to the page
+//     renderBooks(data);
+
+//   });
+// });
+
+// When user hits the genre-search-btn
+// $("#genre-search-btn").on("click", function() {
+
+//   // Save the book they typed into the genre-search input
+//   var genreSearched = $("#genre-search").val().trim();
+
+//   // Make an AJAX get request to our api, including the user's genre in the url
+//   $.get("/api/genre/" + genreSearched, function(data) {
+
+//     console.log(data);
+//     // Call our renderBooks function to add our books to the page
+//     renderBooks(data);
+
+//   });
+
+// });
+
+function renderPlants(data) {
+    if (data.length !== 0) {
+        $("#results").empty();
+        $("#results").show();
+        $.post("/api/plantSearched", data);
+        console.log("search.js 89 " + data)
+
+
+        for (var i = 0; i < data.length; i++) {
+            var div = $("<div>");
+            if (data[i].common_name === undefined || null) {
+                console.log("No data.");
+            } else {
+
+                div.append("<p> " + data[i].common_name + "</p>");
+
             }
+            div.append("<p><h2>Cultivar:  </h2> " + data[i].cultivar + "</p>");
+            div.append("<p><h2>Botanical name:  </h2> " + data[i].botanical_name + "</p>");
+            div.append("<p> <h2>Ripening season:  </h2>" + data[i].ripening_season + "</p>");
+            div.append("<p><h2>Chill min:  </h2> " + data[i].chill_min + "</p>");
+            div.append("<p><h2>Chill max:  </h2> " + data[i].chill_max + "</p>");
+            div.append("<p><h2>Cold Hardiness:  </h2> " + data[i].cold_hardiness + "</p>");
+            div.append("<p> <h2>Fruit:  </h2>" + data[i].fruit + "</p>");
+            div.append("<p><h2>Water needs:  </h2> " + data[i].water_needs + "</p>");
+            div.append("<p><h2>Sun:  </h2> " + data[i].sun + "</p>");
+            div.append("<p><h2>Soil type:  </h2> " + data[i].soil_type + "</p>");
+            div.append("<p><h2>PH low:  </h2> " + data[i].ph_low + "</p>");
+            div.append("<p><h2>PH high:  </h2> " + data[i].ph_high + "</p>");
+            div.append("<p> <h2>Fertilizer:  </h2>" + data[i].fertilizer + "</p>");
+            div.append("<p><h2>Originating region:  </h2> " + data[i].originating_region + "</p>");
+            div.append("<p> <h2>Description:  </h2>" + data[i].description + "</p>");
+            div.append("<p> <h2>Parentage:  </h2>" + data[i].parentage + "</p><hr>");
+
+            $("#results").append(div);
         }
-        $('html, body').animate({ scrollTop: 0 }, 'fast');
-    };
-
-    // $(".delete").click(function() {
-
-    //     var info = {
-    //         id: $(this).attr("data-id")
-    //     };
-
-    //     $.post("/api/delete", info)
-    //         // On success, run the following code
-    //         .done(function(deldata) {
-    //             // Log the data we found
-    //             console.log(deldata);
-    //             console.log("Deleted Successfully!");
-    //         });
-
-    //     $(this).closest("div").remove();
-
-    // });
 
 
-}); //goes to document on ready
+
+        $(".delete").click(function() {
+
+            var info = {
+                id: $(this).attr("data-id")
+            };
+
+            $.post("/api/delete", info)
+                // On success, run the following code
+                .done(function(deldata) {
+                    // Log the data we found
+                    console.log(deldata);
+                    console.log("Deleted Successfully!");
+                });
+
+            $(this).closest("div").remove();
+
+        });
+    }
+};

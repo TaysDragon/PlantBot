@@ -1,37 +1,23 @@
-var mysql = require('mysql');
-var connection;
-
-if (JAWSDB_URL) {
-    connection = mysql.createConnection(JAWSDB_URL);
-} else {
-    connection = mysql.createConnection({
-        host: 'localhost',
-        username: "root",
-        password: "root",
-        database: "plants_db"
-    });
-};
-
-
 {
-    "development": {
-        "username": "root",
-        "password": "root",
-        "database": "plants_db",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
-    },
-    "test": {
-        "username": "root",
-        "password": "root",
-        "database": "database_test",
-        "host": "127.0.0.1",
-        "dialect": "mysql"
-    },
-    "production": {
-        "use_env_variable": "JAWSDB_URL"
-    }
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "plants_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "root",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "vmefs065wqneognl",
+    "password": "mwd0x581a8o0oomi",
+    "database": "khj2vbu7xzncf8xu",
+    "host": "s54ham9zz83czkff.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "dialect": "mysql"
+  }
 }
-
-connection.connect();
-module.exports = connection;

@@ -9,7 +9,6 @@ var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var axios = require('axios');
 var sequelize = require('sequelize');
-var models = require('./models');
 
 
 // Sets up the Express App
@@ -27,7 +26,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
-app.use(express.static(__dirname + "/public"));
+app.use(express.static("./public"));
 
 
 // Routes
@@ -38,8 +37,14 @@ require("./routes/html-routes.js")(app);
 
 // Syncing our sequelize models and then starting our express app
 db.sequelize.sync({ force: false })
+
+.then(function(){
+// 	return db.fruit.create({      
+        
+// });
+})
 .then(function() {
-  app.listen(PORT, function() {
+  app.listen(process.env.PORT || 8080, function() {
     console.log("App listening on port " + PORT);
   });
 });

@@ -1,0 +1,40 @@
+git add -A
+
+
+
+
+git commit -m "jawsDB for heroku"
+
+
+
+
+
+git push origin master
+
+
+
+
+
+heroku 
+
+create plant80
+
+
+
+
+git remote -v
+
+
+
+git push heroku master
+
+
+
+
+
+git remote add heroku git@heroku.com:plant80.git
+
+
+git remote rm heroku
+
+git remote add heroku git@heroku.com:plantbot80.git
